@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag 'show' %>
+<div id='title'><span id='back'><%= link_to "Go Back", '/articles' %></span>
+
+<h1><%= @article.title %></h1></div>
+
+<p id='body'><%= @article.body %></p>
+
+<ul class='article-options'>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+<li><%= link_to "Destroy", article_path(@article), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                } %></li>
+</ul>
+
+<div id='comment-section'>
+  <div id='comments'>
+  <h2>Comments</h2>
+  <div id='comment'><%= render @article.comments %></div></div>
+
+  <div id='add-comment'>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %></div>
+</div>
